@@ -48,3 +48,9 @@ split_by_age([User | Rest], {Acc1, Acc2}) ->
     % а иначе
     true -> split_by_age(Rest, {Acc1, [User | Acc2]})
   end.
+
+% ======= Фильтрация списка на нечетные ==========
+
+% 1. Even = fun(X) -> X rem 2 =:= 0 end. 
+% 2. List = [1,2,3,4,5,6,7,8].
+% 3. EvenList = lists:filter(Even, List). -> [2,4,6,8] 
