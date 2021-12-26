@@ -17,3 +17,33 @@ funs ("фаны") это “анонимные” функции. Они наз�
 2. Double(4). -> 8
 
 !!! Анонимная функция может принимать любое количество аргументов. !!!
+
+**_ Guard / Гард _**
+
+check*user({user, *, Gender, Age}) when Gender =:= female, Age > 18 -> woman;
+check*user({user, *, Gender, Age}) when Gender =:= male, Age > 18 -> man;
+check*user({user, *, Gender, Age}) when Gender =:= female, Age < 14, Age > 5 -> girl;
+
+check*user({user, *, Gender, Age})
+when Gender =:= female, Age > 18;
+when Gender =:= male, Age > 18
+-> student;
+
+**_ Cluase / Клоз _**
+sum(List) -> sum(List, 0).
+
+sum([], Acc) -> Acc; - это клоз
+sum([Num | Rest], Acc) -> sum(Rest, Acc + Num).
+
+**_ Проп-лист _**
+
+PropList = [{key1, 'value1'}, {key2, 'value2'},{key3, 'value3'},{key4, 'value4'}].
+
+1. proplists:get_value(key1, PropList). --> value1
+   proplists:get_value(key4, PropList). --> value4
+   proplists:get_value(key4123, PropList). --> undefined
+   proplists:get_value(key4123, PropList, "default value"). --> default value
+
+2. proplists:get_all_valuee(key1, PropList). --> Вернёт список из всех значений.
+3. proplists:lookup(key1, PropList). --> {key1, 'value1'}
+4. proplists:lookup_all(key1, PropList). --> Вернёт список из всех кортежей значений.
