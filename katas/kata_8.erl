@@ -1,5 +1,5 @@
 -module(kata_8).
--export([lovefunc/2]).
+-export([lovefunc/2, check_for_factor/2, century/1, expression_matter/3]).
 
 
 % === 1 задача ===
@@ -30,4 +30,20 @@ expression_matter(A, B, C) ->
     (A + B) * C
   ]).
 
-% === 4 Expressions Matter  ===
+% === 4 Grasshopper - Check for factor  ===
+
+check_for_factor(Base, Factor) -> 
+  if 
+    Base rem Factor =:= 0 -> true;
+    true -> false
+  end.
+
+% === Grasshopper - Summation ===
+  
+summation(N) -> summation(N, 0).
+summation(N, Acc) when N =:= 0 -> Acc;
+summation(N, Acc) -> summation(N - 1, Acc + N).
+
+% !!!  summation(N) -> lists:sum(lists:seq(0, N)). !!!
+
+ 
